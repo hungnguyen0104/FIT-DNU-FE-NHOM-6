@@ -1,0 +1,1500 @@
+/* ==========================================
+   CLASSIC LUXURY MUSEUM UI - EXACT CLONE
+   ========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap');
+:root {
+    --bg-deep: #0a0a0a;
+    --gold-main: #d4af37;
+    --gold-dim: rgba(212, 175, 55, 0.15);
+    --gold-text: #e8d08d;
+    --text-white: #ffffff;
+    --text-gray: #9ca3af;
+    --border-gold: rgba(212, 175, 55, 0.3);
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-deep);
+    color: var(--text-white);
+    font-family: var(--font-sans);
+    margin: 0;
+    overflow-x: hidden;
+}
+
+
+/* --- BACKGROUND TƯỢNG THẠCH CAO --- */
+
+
+/* --- Nền bảo tàng dùng chung (Khám phá + Nghệ sĩ) --- */
+
+.hero-wrapper,
+.artists-page {
+    background: linear-gradient(to top, #0a0a0a 2%, transparent 20%), url('../img/bg.png') no-repeat right top;
+    background-size: cover;
+    background-position: center top;
+    background-attachment: scroll;
+}
+
+.hero-wrapper {
+    position: relative;
+    min-height: 100vh;
+    padding-top: 2rem;
+}
+
+@media (max-width: 991px) {
+    .hero-wrapper,
+    .artists-page {
+        background: linear-gradient(to bottom, rgba(10, 10, 10, 0.8), #0a0a0a), url('../img/bg.png') no-repeat center top;
+        background-size: cover;
+    }
+}
+
+
+/* --- NAVBAR & TOP BAR --- */
+
+.navbar-brand {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    color: var(--text-white) !important;
+}
+
+.nav-link {
+    color: var(--text-gray) !important;
+    font-size: 0.9rem;
+    margin: 0 1rem;
+    transition: color 0.3s;
+}
+
+.nav-link.active {
+    color: var(--gold-main) !important;
+    border-bottom: 1px solid var(--gold-main);
+    padding-bottom: 2px;
+}
+
+
+/* ==========================================
+   🔍 THANH TÌM KIẾM (PREMIUM SEARCH BOX)
+   ========================================== */
+
+
+/* 1. Trạng thái bình thường: Nền kính đen mờ, viền vàng sắc nét */
+
+.search-box input.form-control {
+    background: rgba(15, 15, 15, 0.6) !important;
+    border: 1px solid rgba(212, 175, 55, 0.4) !important;
+    /* Viền vàng rõ ràng hơn */
+    color: #ffffff !important;
+    border-radius: 50px !important;
+    padding: 0.5rem 1.5rem 0.5rem 2.8rem !important;
+    /* Tăng khoảng trống cho chữ dễ thở */
+    font-size: 0.9rem !important;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+
+/* Chữ gợi ý (Placeholder) sáng và dễ đọc hơn */
+
+.search-box input.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.4) !important;
+    font-weight: 300;
+}
+
+
+/* 2. TRẠNG THÁI ACTIVE (KHẮC PHỤC LỖI BOOTSTRAP XẤU XÍ) */
+
+.search-box input.form-control:focus {
+    background: rgba(10, 10, 10, 0.9) !important;
+    /* Nền tối hẳn lại để nổi bật chữ */
+    border-color: var(--gold-main) !important;
+    /* Viền sáng rực màu vàng nguyên bản */
+    /* Thay thế viền xanh dương mặc định bằng vệt sáng vàng tỏa ra ngoài */
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.15) !important;
+    outline: none !important;
+}
+
+
+/* 3. Tinh chỉnh Icon kính lúp */
+
+.search-box .fa-search {
+    color: rgba(212, 175, 55, 0.6) !important;
+    /* Đổi icon sang màu vàng mờ */
+    transition: all 0.4s ease;
+    z-index: 5;
+}
+
+
+/* Khi bấm vào ô tìm kiếm, icon kính lúp cũng sáng rực lên theo */
+
+.search-box:focus-within .fa-search {
+    color: var(--gold-main) !important;
+}
+
+.btn-outline-gold {
+    border: 1px solid var(--gold-main);
+    color: var(--gold-main);
+    background: transparent;
+    border-radius: 50px;
+    padding: 0.4rem 1.5rem;
+    font-size: 0.85rem;
+    transition: all 0.3s;
+}
+
+.btn-outline-gold:hover {
+    background: var(--gold-main);
+    color: var(--bg-deep);
+}
+
+
+/* --- HERO TYPOGRAPHY --- */
+
+
+/* ==========================================
+   🔧 SỬA LỖI KHOẢNG TRỐNG GIỮA BỘ LỌC VÀ LƯỚI ẢNH
+   ========================================== */
+
+.hero-text-area {
+    padding-top: 8rem !important;
+    /* Giảm từ 12rem xuống 8rem để thu hẹp khoảng cách trên */
+    padding-bottom: 1rem !important;
+    /* Thu nhỏ khoảng trống phía dưới chữ */
+    position: relative;
+    z-index: 10 !important;
+}
+
+
+/* Ép phần chứa lưới ảnh dịch ngược lên trên sát vào thanh bộ lọc */
+
+.gallery-slider-wrapper {
+    margin-top: -1rem !important;
+    /* Dùng số âm để kéo toàn bộ lưới tranh lên cao */
+    position: relative;
+    z-index: 10;
+    padding-top: 0 !important;
+}
+
+
+/* Đảm bảo khung chứa ảnh nền không bị phình chiều cao vô lý */
+
+.hero-wrapper {
+    min-height: auto !important;
+    /* Bỏ ép buộc chiều cao full màn hình */
+    padding-bottom: 2rem;
+}
+
+
+/* Ngôi sao lấp lánh nhỏ (Tùy chọn) */
+
+.hero-text-area::before {
+    content: '✦';
+    position: absolute;
+    top: 2rem;
+    left: 0;
+    color: var(--gold-main);
+    font-size: 1.5rem;
+}
+
+.title-kham-pha {
+    font-family: var(--font-serif);
+    font-size: 4rem;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+
+.title-nghe-thuat {
+    font-family: var(--font-serif);
+    font-size: 4.5rem;
+    font-style: italic;
+    color: var(--gold-text);
+}
+
+.title-dich-thuc {
+    font-family: var(--font-serif);
+    font-size: 4rem;
+    font-weight: 400;
+}
+
+.subtitle-text {
+    color: var(--text-gray);
+    font-size: 0.95rem;
+    max-width: 450px;
+    line-height: 1.6;
+    margin-top: 1rem;
+}
+
+
+/* --- FILTER BUTTONS --- */
+
+
+/* --- FILTER BUTTONS --- */
+
+.filter-btn {
+    background: transparent;
+    border: 1px solid var(--border-gold);
+    color: var(--text-gray);
+    border-radius: 50px;
+    padding: 0.4rem 1.5rem;
+    font-size: 0.85rem;
+    /* Tăng độ mượt của animation (chuyển động chậm rãi, êm ái) */
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer;
+}
+
+
+/* 🌟 HIỆU ỨNG HOVER KHI RÊ CHUỘT VÀO */
+
+.filter-btn:hover {
+    border-color: var(--gold-main) !important;
+    /* Đậm viền vàng */
+    color: var(--text-white) !important;
+    /* Chữ sáng trắng lên */
+    background: rgba(212, 175, 55, 0.08);
+    /* Nền phủ lớp vàng cực mỏng */
+    transform: translateY(-3px);
+    /* Nổi nhẹ nút lên trên 3px */
+    box-shadow: 0 6px 15px rgba(212, 175, 55, 0.15);
+    /* Tỏa hào quang vàng mờ ở đáy */
+}
+
+
+/* Trạng thái nút đang được chọn (Active) */
+
+.filter-btn.active {
+    background: var(--gold-dim);
+    border-color: var(--gold-main);
+    color: var(--gold-text);
+}
+
+
+/* Hover thêm cho nút Active cho xịn xò */
+
+.filter-btn.active:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.25);
+}
+
+
+/* --- KHỐI HOT NHẤT FLOATING T BÊN PHẢI --- */
+
+.hot-floating-card {
+    position: absolute;
+    right: 5%;
+    top: 45%;
+    background: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-gold);
+    border-radius: 12px;
+    padding: 1.5rem;
+    width: 250px;
+}
+
+.hot-title {
+    color: var(--gold-text);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+
+/* --- VERTICAL TEXT (FEATURED) --- */
+
+.vertical-text-container {
+    position: absolute;
+    left: 2%;
+    top: 60%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.vertical-text {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    letter-spacing: 4px;
+    font-size: 0.75rem;
+    color: var(--gold-main);
+    text-transform: uppercase;
+}
+
+
+/* --- GALLERY LƯỚI GRID (TỰ ĐỘNG XUỐNG DÒNG) --- */
+
+.gallery-slider-wrapper {
+    position: relative;
+    padding-left: 8%;
+    /* Vẫn giữ khoảng trống bên trái để không đè lên chữ FEATURED */
+    padding-right: 5%;
+    margin-top: 3rem;
+    padding-bottom: 4rem;
+}
+
+
+/* Biến thành lưới Grid tự động */
+
+.gallery-slider {
+    display: grid;
+    /* Phép thuật ở đây: Tự động chia cột, mỗi cột tối thiểu 300px, hết chỗ tự rớt xuống dòng */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    /* Khoảng cách cực thoáng giữa các thẻ */
+    width: 100%;
+}
+
+
+/* --- THẺ CARD LUXURY CHUẨN ẢNH --- */
+
+
+/* ==========================================
+/* ==========================================
+   🎨 TRẢ LẠI SỰ ĐỒNG BỘ CHO LƯỚI THUMBNAIL
+   ========================================== */
+
+.luxury-card img {
+    width: 100% !important;
+    height: 260px !important;
+    /* Tăng nhẹ chiều cao lên một chút cho khung ảnh thanh thoát hơn */
+    /* 1. Trở lại 'cover' để lấp đầy khung, xóa sổ hoàn toàn các dải đen xấu xí */
+    object-fit: cover !important;
+    /* 2. BÍ QUYẾT: Căn trọng tâm ảnh lên phía trên (20%) thay vì chính giữa. 
+       Giúp chân dung Mona Lisa hay các nhân vật không bị cắt mất đầu/mặt */
+    object-position: center 20% !important;
+    background-color: transparent !important;
+    border-radius: 8px !important;
+    margin-bottom: 1.2rem !important;
+    filter: brightness(0.9);
+    transition: filter 0.3s ease, transform 0.5s ease !important;
+}
+
+
+/* Thêm hiệu ứng hover phóng to nhẹ hình ảnh bên trong thẻ card cho mượt mà */
+
+.luxury-card:hover img {
+    filter: brightness(1.1);
+}
+
+.luxury-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--gold-main);
+}
+
+.luxury-card img {
+    width: 100%;
+    height: 250px;
+    /* Tăng chiều cao ảnh lên một chút cho cân đối với giao diện Grid */
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    filter: brightness(0.9);
+}
+
+.luxury-card:hover img {
+    filter: brightness(1.1);
+}
+
+.card-title-serif {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    color: var(--text-white);
+    margin-bottom: 0.2rem;
+}
+
+.card-artist-sans {
+    font-size: 0.8rem;
+    color: var(--text-gray);
+    margin-bottom: 1.2rem;
+}
+
+.card-bottom-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.likes-text {
+    font-size: 0.85rem;
+    color: var(--gold-text);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-plus-circle {
+    background: transparent;
+    border: 1px solid var(--text-gray);
+    color: var(--text-gray);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.btn-plus-circle:hover {
+    border-color: var(--gold-main);
+    color: var(--gold-main);
+}
+
+/* --- THẺ TAG PHONG CÁCH (bên cạnh tên tác phẩm) --- */
+
+.card-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.65rem;
+}
+
+.style-tag {
+    flex: 0 0 auto;
+    display: inline-block;
+    padding: 0.32rem 0.7rem;
+    border-radius: 4px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: 1px solid transparent;
+    line-height: 1.15;
+    user-select: none;
+    white-space: nowrap;
+}
+
+.style-tag-abstract {
+    color: #ecd9ff;
+    background: linear-gradient(135deg, rgba(100, 55, 140, 0.45), rgba(60, 30, 90, 0.55));
+    border-color: rgba(180, 120, 255, 0.4);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.style-tag-modern {
+    color: #d8eeff;
+    background: linear-gradient(135deg, rgba(35, 90, 140, 0.45), rgba(20, 50, 85, 0.55));
+    border-color: rgba(100, 175, 255, 0.38);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.style-tag-classic {
+    color: #ffecd0;
+    background: linear-gradient(135deg, rgba(130, 85, 30, 0.45), rgba(75, 48, 15, 0.55));
+    border-color: rgba(255, 185, 90, 0.38);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.style-tag-minimal {
+    color: #d4ebe0;
+    background: linear-gradient(135deg, rgba(45, 68, 58, 0.65), rgba(28, 42, 36, 0.75));
+    border-color: rgba(120, 185, 155, 0.35);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.style-tag-default {
+    color: var(--gold-text);
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(90, 72, 25, 0.45));
+    border-color: rgba(212, 175, 55, 0.35);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+#modalStyle.style-tag {
+    font-size: 0.72rem;
+    padding: 0.4rem 0.85rem;
+}
+
+.luxury-card {
+    flex: 0 0 auto;
+    width: 320px;
+    /* Độ rộng cố định cho mỗi thẻ */
+    scroll-snap-align: start;
+    background: rgba(15, 15, 15, 0.8);
+    border: 1px solid var(--border-gold);
+    border-radius: 12px;
+    padding: 0.8rem;
+    transition: transform 0.3s ease, border-color 0.3s;
+}
+
+.luxury-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--gold-main);
+}
+
+.luxury-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    filter: brightness(0.9);
+}
+
+.luxury-card:hover img {
+    filter: brightness(1.1);
+}
+
+.card-title-serif {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    color: var(--text-white);
+    margin-bottom: 0.2rem;
+}
+
+.card-artist-sans {
+    font-size: 0.8rem;
+    color: var(--text-gray);
+    margin-bottom: 1.2rem;
+}
+
+.card-bottom-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.likes-text {
+    font-size: 0.85rem;
+    color: var(--gold-text);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-plus-circle {
+    background: transparent;
+    border: 1px solid var(--text-gray);
+    color: var(--text-gray);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.btn-plus-circle:hover {
+    border-color: var(--gold-main);
+    color: var(--gold-main);
+}
+
+
+/* ==========================================
+   👑 FIX MODAL CHI TIẾT TÁC PHẨM (MUSEUM STYLE)
+   ========================================== */
+
+
+/* 1. Ép toàn bộ khung Modal sang màu tối, xóa dứt điểm nền trắng */
+
+#artworkModal .modal-content {
+    background: #121212 !important;
+    /* Màu nền Onyx đồng bộ với giao diện */
+    border: 1px solid var(--border-gold) !important;
+    /* Viền vàng mảnh sang trọng */
+    border-radius: 16px !important;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.9);
+}
+
+
+/* 2. Xử lý vùng chứa ảnh bên trái */
+
+#artworkModal .bg-black {
+    background-color: #050505 !important;
+    display: flex;
+    align-items: center;
+    /* Căn giữa ảnh theo chiều dọc */
+    justify-content: center;
+    min-height: 550px;
+    /* Chiều cao tối thiểu để không bị hụt */
+}
+
+
+/* Giữ nguyên tỉ lệ gốc của bức tranh, không để lộ khoảng trống thô */
+
+#modalImage {
+    width: 100%;
+    height: 100%;
+    max-height: 600px;
+    object-fit: contain;
+    /* Tranh nằm gọn gàng, trọn vẹn, không bị mất góc */
+}
+
+
+/* 3. Phù phép lại toàn bộ chữ và nền vùng thông tin bên phải */
+
+#artworkModal .col-lg-5 {
+    background: #121212 !important;
+    color: var(--text-white) !important;
+}
+
+#modalTitle {
+    font-family: var(--font-serif);
+    color: var(--text-white) !important;
+    font-weight: 600;
+}
+
+#modalDate {
+    color: var(--gold-text) !important;
+    /* Ngày đăng chuyển sang màu vàng đồng */
+}
+
+#modalDesc {
+    color: var(--text-gray) !important;
+    /* Miêu tả màu xám thanh lịch */
+    line-height: 1.8;
+}
+
+
+/* Badge phân loại trong Modal dùng chung .style-tag */
+
+
+/* Khung thông tin nghệ sĩ ở đáy Modal */
+
+#artworkModal .glass-panel {
+    background: rgba(255, 255, 255, 0.02) !important;
+    border: 1px solid rgba(212, 175, 55, 0.1) !important;
+}
+
+#modalArtistName {
+    color: var(--text-white) !important;
+}
+
+
+/* Khung chứa bên trái: Biến thành một phòng tối rọi đèn */
+
+#artworkModal .bg-black {
+    background-color: #050505 !important;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 550px;
+    height: 100%;
+}
+
+
+/* ẢNH CHÍNH BÊN TRÊN: Giữ nguyên vẹn 100% tác phẩm, nằm nổi bật ở giữa */
+
+#modalImage {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 550px !important;
+    object-fit: contain !important;
+    position: relative;
+    z-index: 2;
+    /* Nổi lên trên lớp nền mờ */
+    /* Thêm một chút bóng đổ mịn để tách biệt bức tranh khỏi nền */
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.7)) brightness(0.95);
+    transition: filter 0.3s ease;
+}
+
+#modalImage:hover {
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.9)) brightness(1.05);
+}
+
+
+/* PHÉP THUẬT CSS: Tạo một lớp nền mờ lấp đầy khoảng trống */
+
+#artworkModal .bg-black::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Lấy chính bức tranh đang hiển thị để làm ảnh nền ẩn phía sau */
+    background-image: inherit;
+    background-size: cover;
+    background-position: center;
+    /* Làm mờ cực mạnh và giảm độ sáng để tạo chiều sâu hệt như rạp phim */
+    filter: blur(40px) brightness(0.25) opacity(0.6);
+    z-index: 1;
+    /* Nằm dưới bức tranh chính */
+    transform: scale(1.1);
+    /* Phóng to nhẹ để che hết các mép viền */
+}
+
+
+/* ==========================================
+   👑 ADMIN DASHBOARD - LUXURY MUSEUM EDITION
+   ========================================== */
+
+
+/* 1. Xóa nền trắng, ép bảng thành khối kính đen mờ viền vàng */
+
+.table-responsive {
+    background: rgba(15, 15, 15, 0.9) !important;
+    border: 1px solid var(--border-gold) !important;
+    border-radius: 12px !important;
+    padding: 1.5rem !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5) !important;
+}
+
+
+/* Ép bảng trong suốt hoàn toàn */
+
+.table {
+    --bs-table-bg: transparent !important;
+    --bs-table-color: var(--text-white) !important;
+    margin-bottom: 0 !important;
+}
+
+
+/* 2. Tiêu đề cột (Header) mạ vàng */
+
+.table thead th {
+    border-bottom: 1px solid var(--border-gold) !important;
+    color: var(--gold-main) !important;
+    font-family: var(--font-serif) !important;
+    font-size: 0.95rem !important;
+    letter-spacing: 1px !important;
+    background: transparent !important;
+    padding: 1.2rem 1rem !important;
+}
+
+
+/* 3. Từng ô dữ liệu (Cell) */
+
+.table tbody td {
+    background: transparent !important;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1) !important;
+    vertical-align: middle !important;
+    color: var(--text-white) !important;
+    /* Cứu chữ bị tàng hình */
+    padding: 1.2rem 1rem !important;
+}
+
+.table tbody tr:hover td {
+    background-color: rgba(212, 175, 55, 0.05) !important;
+    /* Sáng vàng nhẹ khi rê chuột */
+}
+
+.table tbody tr:last-child td {
+    border-bottom: none !important;
+}
+
+
+/* 4. Thanh phân trang (Pagination) mạ vàng */
+
+.pagination .page-link {
+    background: transparent;
+    border: 1px solid var(--border-gold);
+    color: var(--text-gray);
+    margin: 0 4px;
+    border-radius: 8px !important;
+    transition: all 0.3s ease;
+}
+
+.pagination .page-item.active .page-link,
+.pagination .page-link:hover {
+    background: var(--gold-main);
+    border-color: var(--gold-main);
+    color: var(--bg-deep);
+}
+
+.pagination .page-item.disabled .page-link {
+    border-color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.2);
+}
+
+
+/* ==========================================
+   👑 WORKSPACE FORM & INPUT PREMIUM STYLE
+   ========================================== */
+
+
+/* ==========================================
+   👑 ĐẶC TRỊ LỖI PHÔNG INPUT VÀ LABEL TRONG FORM FLOATING
+   ========================================== */
+
+
+/* 1. Ép toàn bộ nền ô nhập liệu (Input, Select, Textarea) về màu tối */
+
+.form-floating>.form-control,
+.form-floating>.form-select,
+.form-floating>.form-control:focus,
+.form-floating>.form-select:focus,
+.form-floating>.form-control:not(:placeholder-shown) {
+    background-color: #1a1a1a !important;
+    /* Đen nhám Onyx vững chắc */
+    color: #ffffff !important;
+    /* Chữ nhập vào màu trắng sắc nét */
+    border: 1px solid rgba(212, 175, 55, 0.3) !important;
+    /* Viền vàng mỏng */
+    border-radius: 8px !important;
+    box-shadow: none !important;
+}
+
+
+/* Khi bấm chuột vào ô (Focus) */
+
+.form-floating>.form-control:focus,
+.form-floating>.form-select:focus {
+    border-color: var(--gold-main) !important;
+    /* Viền sáng vàng nguyên bản */
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.15) !important;
+    /* Tỏa hào quang nhẹ */
+}
+
+
+/* 2. CHỮA LỖI MẢNG TRẮNG CỦA NHÃN (LABEL FIX) */
+
+.form-floating>label {
+    color: rgba(212, 175, 55, 0.6) !important;
+    /* Chữ nhãn mặc định màu vàng mờ */
+    background: transparent !important;
+    /* Xóa bỏ hoàn toàn mảng nền trắng lỗi */
+    padding-left: 1rem !important;
+    transition: all 0.2s ease-in-out !important;
+}
+
+
+/* 3. Phù phép khi nhãn co nhỏ và nhảy lên trên viền */
+
+.form-floating>.form-control:focus~label,
+.form-floating>.form-control:not(:placeholder-shown)~label,
+.form-floating>.form-select~label {
+    color: var(--gold-main) !important;
+    /* Đổi sang màu vàng Champagne */
+    opacity: 1 !important;
+    /* Giải pháp tối thượng: Buộc lớp nền che viền của nhãn phải là màu đen của Modal (#121212) */
+    background-color: #121212 !important;
+    padding: 0 6px !important;
+    height: auto !important;
+    max-height: 20px;
+    display: inline-flex !important;
+    align-items: center;
+    left: 10px !important;
+    top: 0px !important;
+    border-radius: 4px;
+}
+
+
+/* 4. Giữ nguyên bộ Option đổ xuống tối giản đắt tiền */
+
+.form-select option {
+    background-color: #161616 !important;
+    color: #f5f5f0 !important;
+}
+
+.form-select:focus option:checked {
+    background: var(--gold-main) !important;
+    color: #0a0a0a !important;
+}
+
+
+/* Phục hồi lớp mặt nạ che viền của Bootstrap, dùng màu trùng với nền Modal */
+
+.form-floating>label::after {
+    background-color: #121212 !important;
+}
+
+
+/* ==========================================
+   💥 HIỆU ỨNG THẢ TIM
+   ========================================== */
+
+
+/* 1. Nhịp đập mạnh của trái tim chính (Đập 2 nhịp như tim thật) */
+
+@keyframes heartBeatVip {
+    0% {
+        transform: scale(1);
+    }
+    25% {
+        transform: scale(1.5);
+        text-shadow: 0 0 20px rgba(220, 53, 69, 1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    75% {
+        transform: scale(1.4);
+    }
+    100% {
+        transform: scale(1);
+        text-shadow: 0 0 0 transparent;
+    }
+}
+
+.heart-vip-anim {
+    animation: heartBeatVip 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+
+/* 2. Vòng sóng siêu âm tỏa ra (Ripple effect) */
+
+@keyframes rippleExpand {
+    0% {
+        transform: scale(0);
+        opacity: 0.8;
+        border-width: 4px;
+    }
+    100% {
+        transform: scale(3.5);
+        opacity: 0;
+        border-width: 0px;
+    }
+}
+
+.heart-ripple {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    margin-top: -15px;
+    margin-left: -15px;
+    border: solid 4px rgba(220, 53, 69, 0.8);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: rippleExpand 0.6s ease-out forwards;
+    z-index: 99;
+}
+
+
+/* 3. Pháo hoa bắn tung tóe (Particles văng ra mọi hướng) */
+
+@keyframes particleBurst {
+    0% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        /* Sử dụng biến CSS để truyền quỹ đạo bắn ngẫu nhiên từ JS */
+        transform: translate(var(--tx), var(--ty)) scale(0) rotate(var(--rot));
+        opacity: 0;
+    }
+}
+
+.heart-particle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: #ff4757;
+    pointer-events: none;
+    /* Dùng gia tốc bắn mạnh lúc đầu, chậm dần lúc sau */
+    animation: particleBurst 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    z-index: 100;
+    margin-top: -10px;
+    margin-left: -10px;
+}
+
+
+/* ==========================================
+   🌟 HIỆU ỨNG NAVBAR KHI CUỘN TRANG (GLASSMORPHISM)
+   ========================================== */
+
+
+/* 1. Trạng thái mặc định (Ở sát trên cùng) */
+
+.navbar-custom {
+    background-color: transparent !important;
+    /* Hoàn toàn trong suốt để khoe ảnh nền */
+    border-bottom: 1px solid transparent !important;
+    padding: 1.5rem 0 !important;
+    /* Rộng rãi, thư thả */
+    transition: all 0.4s ease-in-out;
+    /* Chuyển động mượt mà mất 0.4 giây */
+    backdrop-filter: blur(0px);
+}
+
+
+/* 2. Trạng thái khi cuộn chuột xuống (Sẽ được JS tự động thêm vào) */
+
+.navbar-custom.navbar-scrolled {
+    background-color: rgba(5, 5, 5, 0.85) !important;
+    /* Nền đen xuyên thấu */
+    backdrop-filter: blur(15px);
+    /* Hiệu ứng kính mờ cực xịn */
+    -webkit-backdrop-filter: blur(15px);
+    /* Hỗ trợ riêng cho Safari/iPhone */
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2) !important;
+    /* Hiện viền vàng mờ */
+    padding: 0.8rem 0 !important;
+    /* Thu gọn chiều cao lại để nhường chỗ xem tranh */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    /* Đổ bóng đổ phân cách với nền */
+}
+
+/* ==========================================
+   ARTISTS PAGE
+   ========================================== */
+.artists-page {
+    position: relative;
+    min-height: 100vh;
+}
+
+.artists-page-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    color: var(--gold-main);
+    font-weight: 500;
+}
+
+.artist-section {
+    border: 1px solid var(--border-gold);
+    border-radius: 16px;
+    padding: 1.5rem;
+    background: rgba(15, 15, 15, 0.75);
+}
+
+.artist-section-head {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+}
+
+.artist-avatar-lg {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--border-gold);
+    flex-shrink: 0;
+    box-shadow: 0 0 24px rgba(212, 175, 55, 0.15);
+}
+
+.artist-section-name {
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    color: var(--text-white);
+    margin-bottom: 0.35rem;
+}
+
+.artist-section-bio {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    max-width: 720px;
+}
+
+.artist-stat-pill {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--gold-text);
+    padding: 0.35rem 0.75rem;
+    border: 1px solid var(--border-gold);
+    border-radius: 0;
+    background: rgba(212, 175, 55, 0.06);
+}
+
+.artist-works-heading {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    color: var(--gold-text);
+    margin-bottom: 1rem;
+    letter-spacing: 0.5px;
+}
+
+.artist-works-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1rem;
+}
+
+.artist-work-card {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    aspect-ratio: 4 / 5;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.artist-work-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.92);
+    transition: filter 0.25s ease, transform 0.35s ease;
+}
+
+.artist-work-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--gold-main);
+}
+
+.artist-work-card:hover img {
+    filter: brightness(1.05);
+    transform: scale(1.03);
+}
+
+.artist-work-overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0.65rem 0.75rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.88), transparent);
+}
+
+.artist-work-title {
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+}
+
+.artist-work-overlay .style-tag {
+    margin-top: 0.25rem;
+}
+
+@media (max-width: 576px) {
+    .artist-section-head {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .artist-section-meta .d-flex {
+        justify-content: center;
+    }
+}
+
+/* ==========================================
+   AUTH PORTAL (Đăng nhập / Đăng ký)
+   ========================================== */
+
+.auth-page {
+    min-height: 100vh;
+    background: linear-gradient(to top, #0a0a0a 5%, transparent 35%),
+        url('../img/bg.png') no-repeat center top;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+@media (max-width: 991px) {
+    .auth-page {
+        background: linear-gradient(to bottom, rgba(10, 10, 10, 0.88), #0a0a0a),
+            url('../img/bg.png') no-repeat center top;
+        background-size: cover;
+        background-attachment: scroll;
+    }
+}
+
+.auth-topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.1rem 1.5rem;
+    background: rgba(5, 5, 5, 0.55);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.12);
+}
+
+.auth-topbar-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    color: var(--text-white) !important;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+}
+
+.auth-topbar-brand i {
+    color: var(--gold-main);
+}
+
+.auth-topbar-home {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 1rem;
+    border: 1px solid var(--border-gold);
+    border-radius: 50px;
+    color: var(--gold-text) !important;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.auth-topbar-home:hover {
+    background: var(--gold-main);
+    color: var(--bg-deep) !important;
+    border-color: var(--gold-main);
+}
+
+.auth-portal {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5.5rem 1.25rem 2.5rem;
+}
+
+.auth-portal-card {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    padding: 2rem 1.75rem 1.5rem;
+    border-radius: 20px;
+    background: rgba(8, 8, 8, 0.82);
+    border: 1px solid rgba(212, 175, 55, 0.22);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    overflow: hidden;
+}
+
+.auth-portal-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold-main), transparent);
+    opacity: 0.85;
+}
+
+.auth-portal-glow {
+    position: absolute;
+    top: -40%;
+    left: 50%;
+    width: 280px;
+    height: 280px;
+    transform: translateX(-50%);
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.auth-portal-header {
+    position: relative;
+    text-align: center;
+    margin-bottom: 1.75rem;
+}
+
+.auth-portal-emblem {
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid var(--border-gold);
+    background: rgba(212, 175, 55, 0.08);
+    color: var(--gold-main);
+    font-size: 1.15rem;
+    box-shadow: 0 0 28px rgba(212, 175, 55, 0.15);
+}
+
+.auth-portal-eyebrow {
+    margin: 0 0 0.35rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.28em;
+    color: var(--gold-text);
+    opacity: 0.75;
+}
+
+.auth-portal-title {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: clamp(1.65rem, 4vw, 2rem);
+    font-weight: 500;
+    color: var(--text-white);
+}
+
+.auth-tab-switch {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    padding: 4px;
+    margin-bottom: 1.5rem;
+    border-radius: 50px;
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.auth-tab {
+    position: relative;
+    z-index: 2;
+    border: none;
+    background: transparent;
+    color: var(--text-gray);
+    font-size: 0.88rem;
+    font-weight: 500;
+    padding: 0.65rem 0.5rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: color 0.25s ease;
+}
+
+.auth-tab.active {
+    color: var(--bg-deep);
+}
+
+.auth-tab-indicator {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: calc(50% - 4px);
+    height: calc(100% - 8px);
+    border-radius: 50px;
+    background: linear-gradient(135deg, var(--gold-main), #b8962e);
+    box-shadow: 0 4px 14px rgba(212, 175, 55, 0.35);
+    transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+    z-index: 1;
+}
+
+.auth-tab-switch.is-register .auth-tab-indicator {
+    transform: translateX(100%);
+}
+
+.auth-alert {
+    margin-bottom: 1rem;
+    padding: 0.65rem 0.9rem;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    border: 1px solid transparent;
+}
+
+.auth-alert.alert-success {
+    background: rgba(40, 167, 69, 0.12);
+    border-color: rgba(40, 167, 69, 0.35);
+    color: #8fd9a0;
+}
+
+.auth-alert.alert-danger {
+    background: rgba(220, 53, 69, 0.12);
+    border-color: rgba(220, 53, 69, 0.35);
+    color: #f5a5ad;
+}
+
+.auth-alert.alert-warning {
+    background: rgba(212, 175, 55, 0.1);
+    border-color: rgba(212, 175, 55, 0.35);
+    color: var(--gold-text);
+}
+
+.auth-panels {
+    position: relative;
+    min-height: 200px;
+}
+
+.auth-panel {
+    animation: authPanelIn 0.35s ease;
+}
+
+@keyframes authPanelIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.auth-field {
+    position: relative;
+}
+
+.auth-field-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(212, 175, 55, 0.55);
+    font-size: 0.85rem;
+    pointer-events: none;
+    transition: color 0.25s ease;
+}
+
+.auth-input {
+    width: 100%;
+    padding: 0.85rem 1rem 0.85rem 2.65rem;
+    border-radius: 12px;
+    border: 1px solid rgba(212, 175, 55, 0.22);
+    background: rgba(12, 12, 12, 0.9);
+    color: var(--text-white);
+    font-size: 0.92rem;
+    outline: none;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.auth-input::placeholder {
+    color: rgba(255, 255, 255, 0.35);
+}
+
+.auth-input:focus {
+    border-color: var(--gold-main);
+    background: rgba(8, 8, 8, 0.95);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.12);
+}
+
+.auth-field:focus-within .auth-field-icon {
+    color: var(--gold-main);
+}
+
+.auth-submit {
+    margin-top: 0.35rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    width: 100%;
+    padding: 0.9rem 1.25rem;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(135deg, var(--gold-main), #b8962e);
+    color: var(--bg-deep);
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+
+.auth-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(212, 175, 55, 0.35);
+    filter: brightness(1.05);
+}
+
+.auth-submit:active {
+    transform: translateY(0);
+}
+
+.auth-portal-footer {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1.75rem;
+    padding-top: 1.25rem;
+}
+
+.auth-portal-footer-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.25), transparent);
+}
+
+.auth-portal-footer-text {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.35);
+    white-space: nowrap;
+}

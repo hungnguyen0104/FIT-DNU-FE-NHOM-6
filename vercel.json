@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "artgallery-fit-dnu-nhom-6",
+  "builds": [
+    { "src": "**/*", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/$1" }
+  ]
+}
