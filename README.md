@@ -26,10 +26,3 @@
 - **Admin:** `admin` / `admin123` (trang Quản trị)
 - **User:** đăng ký mới qua trang Đăng nhập (lưu trên MockAPI `/user`)
 
-## Deploy lên Vercel
-
-1. Push code lên GitHub (repository public).
-2. Vào [vercel.com](https://vercel.com) → **Add New Project** → chọn repo.
-3. Root Directory: thư mục chứa `index.html` (nếu repo nằm trong subfolder thì chọn đúng folder).
-4. Framework Preset: **Other** → Deploy.
-5. Copy link `*.vercel.app` vào mục Demo ở trên.
